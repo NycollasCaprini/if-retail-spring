@@ -10,17 +10,17 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-@MappedSuperclass
 public abstract class User extends GenericDomain {
     private String name;
     private String cpf;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Endereco> enderecoList;
 
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Contato> contatoList;
+
     private int idade;
     private char senha;
     private boolean tipo;

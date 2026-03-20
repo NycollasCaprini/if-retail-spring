@@ -1,7 +1,10 @@
 package br.edu.ifpr.bsi.ifretailspring.domain.endereco;
 
 import br.edu.ifpr.bsi.ifretailspring.domain.GenericDomain;
+import br.edu.ifpr.bsi.ifretailspring.domain.User;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 @Entity
@@ -16,4 +19,8 @@ public class Endereco extends GenericDomain {
     private String estado;
     private String cep;
     private String pais;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id") // Nome da coluna FK no banco
+    private User user;
 }

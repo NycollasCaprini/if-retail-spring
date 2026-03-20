@@ -7,6 +7,7 @@ import br.edu.ifpr.bsi.ifretailspring.domain.produto.Produto;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 @Entity
 @Data
@@ -18,6 +19,8 @@ public class Cliente extends User {
 
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidoList;
+
+    @OneToMany(mappedBy = "cliente")
     private List<Produto> listaDeProdutosFavoritos;
 
 }

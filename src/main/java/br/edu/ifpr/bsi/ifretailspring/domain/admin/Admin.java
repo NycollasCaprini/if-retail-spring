@@ -13,4 +13,6 @@ public class Admin extends User {
     private String cargo;
     private String dataAdmissao;
     private boolean status;
+
+
 }

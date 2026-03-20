@@ -1,6 +1,7 @@
 package br.edu.ifpr.bsi.ifretailspring.domain.contato;
 
 import br.edu.ifpr.bsi.ifretailspring.domain.GenericDomain;
+import br.edu.ifpr.bsi.ifretailspring.domain.User;
 import br.edu.ifpr.bsi.ifretailspring.domain.cliente.Cliente;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -18,4 +19,8 @@ public class Contato extends GenericDomain {
         @ManyToOne
         @JoinColumn(name="cliente_id")
         private Cliente cliente;
+
+        @ManyToOne
+        @JoinColumn(name = "user_id") // Nome da coluna FK no banco
+        private User user;
 }
