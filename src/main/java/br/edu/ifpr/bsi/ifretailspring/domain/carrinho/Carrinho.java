@@ -12,12 +12,14 @@ import java.util.List;
 @Data
 @Table(name="tb_carrinho")
 public class Carrinho extends GenericDomain {
-    private List<Produto> produtoList;
-    private double valorTotal;
+
 
 
     @OneToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+
+    @OneToMany(mappedBy = "carrinho", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemCarrinho> itens;
 
 }

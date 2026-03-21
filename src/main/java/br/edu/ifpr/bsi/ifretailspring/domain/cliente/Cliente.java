@@ -12,15 +12,21 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "tb_clientes")
+@PrimaryKeyJoinColumn(name = "user_id")
 public class Cliente extends User {
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "carrinho_id")
     private Carrinho carrinho;
 
     @OneToMany(mappedBy = "cliente")
-    private List<Pedido> pedidoList;
+    private List<Pedido> pedidoList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "cliente")
-    private List<Produto> listaDeProdutosFavoritos;
-
+    @ManyToMany
+    @JoinTable(
+            name = "tb_clientes_favoritos",
+            joinColumns = @JoinColumn(name = "cliente_id"),
+            inverseJoinColumns = @JoinColumn(name = "produto_id")
+    )
+    private List<Produto> favoritos = new ArrayList<>();
 }

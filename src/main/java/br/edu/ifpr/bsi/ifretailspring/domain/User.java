@@ -2,27 +2,27 @@ package br.edu.ifpr.bsi.ifretailspring.domain;
 
 import br.edu.ifpr.bsi.ifretailspring.domain.contato.Contato;
 import br.edu.ifpr.bsi.ifretailspring.domain.endereco.Endereco;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.OneToMany;
+import br.edu.ifpr.bsi.ifretailspring.domain.enums.UserType;
+import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class User extends GenericDomain {
     private String name;
     private String cpf;
+    private String password; // Hash
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Endereco> enderecoList;
+    @Enumerated(EnumType.STRING)
+    private UserType tipo;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Endereco> enderecoList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Contato> contatoList;
-
-    private int idade;
-    private char senha;
-    private boolean tipo;
-
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Contato> contatoList = new ArrayList<>();
 }

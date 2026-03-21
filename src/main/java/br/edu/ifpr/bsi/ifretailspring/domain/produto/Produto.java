@@ -6,6 +6,7 @@ import br.edu.ifpr.bsi.ifretailspring.domain.cliente.Cliente;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,15 +17,4 @@ public class Produto extends GenericDomain {
     private int QuantidadeEmEstoque;
     private double precoUnitario;
     private boolean status;
-
-    @ManyToOne
-    @JoinColumn(name="cliente_id")
-    private Cliente cliente;
-
-    @ManyToMany
-    @JoinTable(
-
-    )
-    private List<Carrinho> carrinho;
-
 }
