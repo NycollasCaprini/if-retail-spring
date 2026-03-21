@@ -21,6 +21,6 @@ public class Endereco extends GenericDomain {
     private String pais;
 
     @ManyToOne
-    @JoinColumn(name = "user_id") // Nome da coluna FK no banco
+    @JoinColumn(name = "user_id")
     private User user;
 }

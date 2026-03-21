@@ -11,5 +11,5 @@ import lombok.Data;
 public abstract class GenericDomain {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long ID;
+    private Long ID;
 }

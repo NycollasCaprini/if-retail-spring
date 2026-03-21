@@ -16,11 +16,8 @@ public class Contato extends GenericDomain {
         private String email;
         private String whatsapp;
 
-        @ManyToOne
-        @JoinColumn(name="cliente_id")
-        private Cliente cliente;
 
         @ManyToOne
-        @JoinColumn(name = "user_id") // Nome da coluna FK no banco
+        @JoinColumn(name = "user_id")
         private User user;
 }

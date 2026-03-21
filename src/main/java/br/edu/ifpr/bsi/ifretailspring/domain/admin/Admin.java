@@ -2,17 +2,20 @@ package br.edu.ifpr.bsi.ifretailspring.domain.admin;
 
 import br.edu.ifpr.bsi.ifretailspring.domain.User;
 import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.Data;
+
+import java.time.LocalDate;
+
 @Entity
 @Data
-@Table(name = "tb_admin")
+@Table(name = "tb_admins")
+@PrimaryKeyJoinColumn(name = "user_id")
 public class Admin extends User {
     private String matricula;
     private String setor;
     private String cargo;
-    private String dataAdmissao;
+    private LocalDate dataAdmissao; // Use LocalDate em vez de String para datas
     private boolean status;
-
-
 }
